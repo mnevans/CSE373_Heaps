@@ -1,0 +1,75 @@
+// Morgan Evans, 1124703, mnevans
+
+import java.util.Random;
+
+public class CodeTests {
+   public static void main(String[] args) {
+		
+		Random rand = new Random();
+      // Uncomment to select desired type of queue as desired
+		//PriorityQueue queue = new BinaryHeap();
+      //PriorityQueue queue = new ThreeHeap();
+      PriorityQueue queue = new MyPQ();
+		
+		System.out.println("The queue is empty: " + queue.isEmpty());
+		
+      // insert random doubles into the heap
+		System.out.println("Insert random doubles between 0-10 into the queue.");
+      for (int i = 0; i <= 10; i++) {
+         queue.insert(10 * rand.nextDouble());
+      }
+		
+      // check that the queue is not empty
+      System.out.println("The queue is empty: " + queue.isEmpty());
+      
+      // check the size of the queue 
+		System.out.println("Queue size = " + queue.size());
+		
+      // check the minimum value of the queue
+		System.out.printf("Minimum value = %.2f", queue.findMin());
+      System.out.println();
+		
+      // delete all values from the queue
+		System.out.printf("Deleting ");
+      while (queue.size() > 1) {
+			System.out.printf("%.2f", queue.deleteMin());
+         System.out.print(", ");
+		}
+		System.out.printf("%.2f", queue.deleteMin());
+		System.out.println();
+		
+      // check that the queue size is now zero
+		System.out.println("Queue size = " + queue.size());
+		
+      // check that the queue is empty
+		System.out.println("The queue is empty: " + queue.isEmpty());
+      
+      // insert new values into the queue
+      System.out.println("Insert 3.0, 3.0, 4.0, 4.0 into the queue.");
+      for (double i = 4.0; i >= 3.0; i--) {
+			for (int j = 1; j <= 2; j++) {
+				queue.insert(i);
+			}
+		}      
+      
+      // check that the queue is not empty
+      System.out.println("The queue is empty: " + queue.isEmpty());
+      
+      // check the size of the queue
+      System.out.println("Queue size = " + queue.size());
+      
+      // check the minimum value of the queue
+      System.out.println("Minimum value = " + queue.findMin());
+		
+      // delete all values from the queue 
+		System.out.print("Deleting " + queue.deleteMin());
+		for (int i = queue.size(); i > 0; i--) {
+			System.out.print(", " + queue.deleteMin());
+		}
+		System.out.println();
+		
+		// return an EmptyPQException()
+		queue.deleteMin();
+		queue.findMin();	
+	}
+}
